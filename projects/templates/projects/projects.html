@@ -1,0 +1,36 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<h1>Projects List</h1>
+
+<ul>
+    {%for item in project%}
+        <li><a href="{% url 'single_proj' item.id %}">{{ item.title}}</a> ---- {{ item.description}}</li>
+    {% endfor %}
+</ul>
+
+<table>
+    <tr>
+        <th>Title</th>
+        <th>Created Date</th>
+        <th>Votes</th>
+        <th>Vote_Ratio</th>
+        <th>Edit</th>
+        <th>Delete</th>
+        <th>View</th>
+    </tr>
+    {% for item in project %}
+    <tr>
+        <td>{{ item.title }}</td>
+        <td>{{ item.created}}</td>
+        <td>{{ item.vote_total }}</td>
+        <td>{{ item.vote_ratio }}%</td>
+        <td><a href="{% url 'update_project' item.id %}">Edit</a></td>
+        <td><a href="{% url 'delete_project' item.id %}">Delete</a></td>
+        <td><a href="{% url 'single_proj' item.id %}">View...</a></td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}
