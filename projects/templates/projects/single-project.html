@@ -6,6 +6,7 @@
 <br>
 
 {% if proj %}
+    <img style="max-width: 500px;" src="{{ proj.featured_image.url }}">
     <h2>{{ proj.title }} </h2>
     <hr>
     {% for tag in proj.tags.all %}
